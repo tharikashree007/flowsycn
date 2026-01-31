@@ -1,5 +1,5 @@
 services:
-  # Backend API Service
+  # Backend API Service only
   - type: web
     name: flowsync-backend
     env: node
@@ -12,11 +12,4 @@ services:
         generateValue: true
       - key: NODE_ENV
         value: production
-    plan: free
-
-  # Frontend Static Site
-  - type: static
-    name: flowsync-frontend
-    buildCommand: cd "project management system" && npm install && npm run build
-    staticPublishPath: project management system/dist
     plan: free
