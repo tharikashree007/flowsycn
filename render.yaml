@@ -1,9 +1,10 @@
 services:
+  # Backend API Service
   - type: web
-    name: flowsync-app
+    name: flowsync-backend
     env: node
-    buildCommand: npm run install-all && npm run build
-    startCommand: npm run start
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
     envVars:
       - key: MONGODB_URI
         value: mongodb+srv://Tharika:tharika13@cluster0.j0wvduu.mongodb.net/project_management?retryWrites=true&w=majority&appName=Cluster0
@@ -12,7 +13,10 @@ services:
       - key: NODE_ENV
         value: production
     plan: free
-    disk:
-      name: public
-      mountPath: /app/backend/public
-      sizeGB: 1
+
+  # Frontend Static Site
+  - type: static
+    name: flowsync-frontend
+    buildCommand: cd "project management system" && npm install && npm run build
+    staticPublishPath: project management system/dist
+    plan: free
