@@ -14,8 +14,7 @@ const corsOptions = {
   origin: [
     'http://localhost:3000',
     'http://localhost:5173',
-    'https://flowsync-frontend.vercel.app',
-    'https://flowsync-frontend.netlify.app',
+    'https://flowsync-backend-9jm9.onrender.com',
     /\.vercel\.app$/,
     /\.netlify\.app$/
   ],
