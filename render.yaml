@@ -1,10 +1,10 @@
 services:
-  # Backend API Service only
+  # Full-stack service (Frontend + Backend)
   - type: web
-    name: flowsync-backend
+    name: flowsync-app
     env: node
-    buildCommand: cd backend && npm install
-    startCommand: cd backend && npm start
+    buildCommand: npm run install-all && npm run build
+    startCommand: npm run start
     envVars:
       - key: MONGODB_URI
         value: mongodb+srv://Tharika:tharika13@cluster0.j0wvduu.mongodb.net/project_management?retryWrites=true&w=majority&appName=Cluster0
