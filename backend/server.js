@@ -9,7 +9,22 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+// CORS configuration
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://flowsync-frontend.vercel.app',
+    'https://flowsync-frontend.netlify.app',
+    /\.vercel\.app$/,
+    /\.netlify\.app$/
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Serve static files from React build
@@ -18,6 +33,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Health check
 app.get('/api', (req, res) => {
   res.json({ message: 'FlowSync API is running!' });
+});
+
+// Test endpoint
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'API is working', timestamp: new Date().toISOString() });
 });
 
 app.use('/api/auth', require('./routes/auth'));
