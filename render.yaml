@@ -3,7 +3,7 @@ services:
   - type: web
     name: flowsync-app
     env: node
-    buildCommand: npm run install-all && npm run build
+    buildCommand: cd "project management system" && npm install && npm run build && cd .. && node copy-build.js && cd backend && npm install
     startCommand: npm run start
     envVars:
       - key: MONGODB_URI
